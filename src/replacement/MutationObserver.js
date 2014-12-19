@@ -1,0 +1,3 @@
+define('tentacle/replacement/MutationObserver', {
+
+});

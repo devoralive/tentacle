@@ -1,17 +1,18 @@
 require.config({
-    'replacement/Worker': 'node_modules/paralleljs/lib/Worker'
+    'replacement/Worker': 'node_modules/paralleljs/lib/Worker',
+    'replacement/MutationObserver': 'tentacle/replacement/MutationObserver'
 });
-define('navigator', {
-    onLooad: function (name, req) {
+define('tentacle/navigator', {
+    load: function (name, req) {
         if (document[name]) {
-            onload(document[name]);
+            onLoad(document[name]);
         } else if (window[name]) {
-            onload(window[name]);
+            onLoad(window[name]);
         } else if (navigator[name]) {
-            onload(navigator[name]);
+            onLoad(navigator[name]);
         } else {
-            req(['replaement/' + name], function (replacement) {
-                onload(replacement);
+            req(['replacement/' + name], function (replacement) {
+                onLoad(replacement);
             });
         }
     }

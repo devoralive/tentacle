@@ -1,4 +1,4 @@
-define('application', ['domReady!'], function () {
+define('tentacle/application', ['domReady!'], function () {
 
     return {
         load: function (name, req) {
