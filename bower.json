@@ -23,7 +23,6 @@
     "tests"
   ],
   "dependencies": {
-    "doa": "~0.1.1",
-    "nunjucks": "~1.1.0"
+    "doa": "~0.1.1"
   }
 }
