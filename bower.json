@@ -1,0 +1,29 @@
+{
+  "name": "tentacle",
+  "version": "0.0.1",
+  "authors": [
+    "Nicolas Dufreche <n.dufreche@gmail.com>"
+  ],
+  "description": "tentacle framework",
+  "main": "src/farmer.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "framework"
+  ],
+  "license": "MIT",
+  "homepage": "https://github/devoralive/tentacle",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "doa": "~0.1.1",
+    "nunjucks": "~1.1.0"
+  }
+}
