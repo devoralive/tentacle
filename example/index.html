@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tentacle dom reactor routing</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div id="tentacle">
+            <a href="/test" data-tentacle="test:click">
+        </div>
+        <script type="text/javascript" src="../bower_components/requirejs/require.js"></script>
+        <script type="text/javascript" src="require.config.js"></script>
+        <script type="text/javascript">
+            require(['tentacle!#tentacle']);
+        </script>
+    </body>
+</html>
