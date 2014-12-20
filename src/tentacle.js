@@ -1,16 +1,16 @@
-define('tentacle/application', ['tentacle/navigator!MutationObserver', 'doa/class', 'domReady!'], function (MutationObserver, DoaClass) {
-    var grabReactiveNode = function (base) {
-            return
-        },
+define('tentacle', function () {
+    'use strict';
 
-        tentacle = {
-            base,
+    var register = {
+        tentacles: []
+    };
 
-            construct: function (selector) {
-                if ('String' !== typeof selector) {
-                    throw 'tentacle need a dom identifier to work.';
-                }
-                this.base = document.querySelector(selector);
-            }
-        };
+    return {
+        load: function (name, req, onLoad) {
+            req(['doa!class:tentacle/tentacle'], function (Tentacle) {
+                register.tentacles.push(new Tentacle(name));
+                onLoad(undefined);
+            });
+        }
+    };
 });

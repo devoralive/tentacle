@@ -3,7 +3,9 @@ require.config({
     'replacement/MutationObserver': 'tentacle/replacement/MutationObserver'
 });
 define('tentacle/navigator', {
-    load: function (name, req) {
+    load: function (name, req, onLoad) {
+        'use strict';
+
         if (document[name]) {
             onLoad(document[name]);
         } else if (window[name]) {
