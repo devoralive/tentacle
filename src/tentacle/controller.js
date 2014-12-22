@@ -1,4 +1,4 @@
-define('tentacle/controller', ['tentacle/dom'], function (tentacle_dom) {
+define('tentacle/controller', function () {
     'use strict';
 
     var registry = {}
@@ -11,7 +11,7 @@ define('tentacle/controller', ['tentacle/dom'], function (tentacle_dom) {
         resolve: function (namespace, event) {
             namespace = namespace.split(':');
             if (registry[namespace[0]] && registry[namespace[0]][namespace[1]]) {
-                registry[namespace[0]][namespace[1]].call(registry[namespace[0]], tentacle_dom, event);
+                registry[namespace[0]][namespace[1]].call(registry[namespace[0]], event);
             } else {
                 throw 'No method registred';
             }
