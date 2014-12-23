@@ -1,36 +1,40 @@
-define('tentacle/dom', ['doa/class'], function (DoaClass) {
+define('tentacle/dom', function () {
     'use strict';
 
-    var dom = {
-        item: undefined,
+    var dom = function (selector) {
+        this.querSelectorAll(selector);
 
-        insert: function (chain) {
-            var docfrag = document.createDocumentFragment();
-            if (!this.item) {
-                this.item = chain;
+    };
 
-                return this;
-            }
-        },
+    dom.prototype.item = undefined;
 
-        in: function (selector) {
-            this.item = chain;
+    dom.prototype.insert = function (chain) {
+        var block = document.createElement('div');
+        block.innerHTML = chain;
+        this.item = block;
 
-            return this;
-        },
+        return this;
+    };
 
-        before: function (selector) {
-            this.item = chain;
+    dom.prototype.in = function (selector) {
+        var selected = document.querSelector(selector);
+        selected.appendChild(this.item);
+        this.item = undefined;
 
-            return this;
-        },
+        return this;
+    };
 
-        after: function (selector) {
-            this.item = chain;
+    dom.prototype.before = function (selector) {
+        this.item = selector;
 
-            return this;
-        }
-    }
+        return this;
+    };
+
+    dom.prototype.after = function (selector) {
+        this.item = selector;
+
+        return this;
+    };
 
     return dom;
 });
