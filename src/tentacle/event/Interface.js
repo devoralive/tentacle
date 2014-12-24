@@ -2,7 +2,11 @@ define('tentacle/event/intreface', function () {
     'use strict';
 
     return {
-        attach: function (name, element) {
+        accept: function (action) {
+
+        },
+
+        attach: function (cotroller, element, name) {
 
         }
     };
