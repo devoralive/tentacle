@@ -1,11 +1,16 @@
 define('tentacle/controller', function () {
     'use strict';
 
-    var registry = {}
+    var registry = {};
 
     return {
         register: function (controllers) {
-
+            var controller;
+            for (controller in controllers) {
+                if (controllers.hasOwnProperty(controller)) {
+                    registry[controller] = controllers[controller];
+                }
+            }
         },
 
         resolve: function (namespace, event) {
@@ -17,5 +22,5 @@ define('tentacle/controller', function () {
             }
 
         }
-    }
+    };
 });
