@@ -6,7 +6,7 @@ define('tentacle/event/intreface', function () {
 
         },
 
-        attach: function (cotroller, element, name) {
+        attach: function (controller, element) {
 
         }
     };

@@ -1,7 +1,13 @@
-define('tentacle/tentacle', ['tentacle/navigator!MutationObserver'], function (MutationObserver) {
+define('tentacle/tentacle', ['tentacle/navigator!MutationObserver', 'tentacle/event'], function (MutationObserver, event) {
     'use strict';
 
     return {
+        config: {
+            attributes: true,
+            childList: true,
+            characterData: true
+        },
+
         base: {},
 
         observer: {},
@@ -12,6 +18,7 @@ define('tentacle/tentacle', ['tentacle/navigator!MutationObserver'], function (M
             }
             this.base = document.querySelector(selector);
             this.observer = new MutationObserver(this.onMutated.bind(this));
+            event.bindEvents(this.grabNode());
         },
 
         grabNode: function (element) {
