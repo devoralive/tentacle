@@ -1,4 +1,4 @@
-define('tentacle/event', ['doa!class:tentacle/event/tag'], function (Tag) {
+define('tentacle/event', ['tentacle/controller', 'doa!class:tentacle/event/tag'], function (controller, Tag) {
     'use strict';
 
     return {
@@ -20,10 +20,10 @@ define('tentacle/event', ['doa!class:tentacle/event/tag'], function (Tag) {
             for (key in nodes) {
                 if (nodes.hasOwnProperty(key)) {
                     var elems = nodes[key].dataset.tentacle.split(':'),
-                        controller = elems.shift(),
+                        namespace = elems.shift(),
                         action = elems.pop();
 
-                    this.getEventManager(action).attach(nodes[key], controller, action);
+                    this.getEventManager(action).attach(nodes[key], controller, namespace, action);
                     console.log(nodes[key]);
                 }
             }

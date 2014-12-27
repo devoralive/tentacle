@@ -13,14 +13,13 @@ define('tentacle/controller', function () {
             }
         },
 
-        resolve: function (namespace, event) {
+        resolve: function (namespace, action, event) {
             namespace = namespace.split(':');
-            if (registry[namespace[0]] && registry[namespace[0]][namespace[1]]) {
-                registry[namespace[0]][namespace[1]].call(registry[namespace[0]], event);
+            if (registry[namespace] && registry[namespace][action]) {
+                registry[namespace][action].call(registry[namespace], event);
             } else {
                 throw 'No method registred';
             }
-
         }
     };
 });

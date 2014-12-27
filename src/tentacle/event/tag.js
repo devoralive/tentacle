@@ -6,10 +6,10 @@ define('tentacle/event/tag', function () {
             return 'click' === action;
         },
 
-        attach: function (element, controller, action) {
+        attach: function (element, controller, namespace, action) {
             element.addEventListener(action, function (event) {
                 event.preventDefault();
-                console.log(controller, event);
+                controller.resolve(namespace, action, event);
             });
         }
     };
