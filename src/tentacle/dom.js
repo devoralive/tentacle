@@ -1,40 +1,37 @@
 define('tentacle/dom', function () {
     'use strict';
 
-    var dom = function (selector) {
-        this.querSelectorAll(selector);
+    var item = undefined,
 
-    };
+        dom = {
+            insert: function (chain) {
+                var block = document.createElement('div');
+                block.innerHTML = chain;
+                this.item = block;
 
-    dom.prototype.item = undefined;
+                return this;
+            },
 
-    dom.prototype.insert = function (chain) {
-        var block = document.createElement('div');
-        block.innerHTML = chain;
-        this.item = block;
+            in: function (selector) {
+                var selected = document.querySelector(selector);
+                selected.appendChild(this.item);
+                this.item = undefined;
 
-        return this;
-    };
+                return this;
+            },
 
-    dom.prototype.in = function (selector) {
-        var selected = document.querSelector(selector);
-        selected.appendChild(this.item);
-        this.item = undefined;
+            before: function (selector) {
+                this.item = selector;
 
-        return this;
-    };
+                return this;
+            },
 
-    dom.prototype.before = function (selector) {
-        this.item = selector;
+            after: function (selector) {
+                this.item = selector;
 
-        return this;
-    };
-
-    dom.prototype.after = function (selector) {
-        this.item = selector;
-
-        return this;
-    };
+                return this;
+            }
+        };
 
     return dom;
 });
