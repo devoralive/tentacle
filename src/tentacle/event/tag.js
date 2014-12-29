@@ -2,6 +2,10 @@ define('tentacle/event/tag', function () {
     'use strict';
 
     return {
+        name: function () {
+            return 'tentacle/event/tag';
+        },
+
         accept: function (action) {
             return 'click' === action;
         },

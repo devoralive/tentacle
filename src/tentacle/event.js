@@ -1,10 +1,8 @@
-define('tentacle/event', ['tentacle/controller', 'doa!class:tentacle/event/tag'], function (controller, Tag) {
+define('tentacle/event', ['tentacle/controller', 'tentacle/event.loader!'], function (controller, events) {
     'use strict';
 
     return {
-        events: [
-            new Tag()
-        ],
+        events: events,
 
         getEventManager: function (action) {
             var manager;

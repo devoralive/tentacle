@@ -5,5 +5,10 @@ require.config({
         tentacle: 'src/tentacle',
         doa: 'bower_components/doa/dist/doa'
     },
-    shim: {}
+    shim: {},
+    tentacle: {
+        events: [
+            'tentacle/event/tag'
+        ]
+    }
 });
