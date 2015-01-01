@@ -11,12 +11,11 @@
         <script type="text/javascript" src="../bower_components/requirejs/require.js"></script>
         <script type="text/javascript" src="require.config.js"></script>
         <script type="text/javascript">
-            require(['tentacle/controller', 'tentacle/dom', 'tentacle!#container'], function(controller, dom) {
+            require(['tentacle/controller', 'tentacle!#container'], function(controller) {
                 controller.register({
                     test: {
                         click: function () {
                             console.log('click');
-                            dom.insert('<p>Hello World</p>').in('#container');
                         }
                     }
                 });
