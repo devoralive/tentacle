@@ -8,7 +8,7 @@ require.config({
     shim: {},
     tentacle: {
         events: [
-            'tentacle/event/tag'
+            'tentacle/event/mouse'
         ]
     }
 });
