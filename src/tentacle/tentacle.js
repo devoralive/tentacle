@@ -18,7 +18,7 @@ define('tentacle/tentacle', ['tentacle/navigator!MutationObserver', 'tentacle/ev
             }
             this.base = document.querySelector(selector);
             this.observer = new MutationObserver(this.onMutated.bind(this));
-            event.bindEvents(this.grabNode());
+            event.parseEvents(this.grabNode());
         },
 
         grabNode: function (element) {

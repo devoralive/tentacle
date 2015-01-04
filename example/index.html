@@ -6,7 +6,8 @@
     </head>
     <body>
         <div id="container">
-            <a href="/test" data-tentacle="test:click">Test click</a>
+            <p><a href="/test" data-tentacle="test:click">Test click</a></p>
+            <p><a href="/hover" data-tentacle="test:mouseover test:mouseout">Test mouseover</a></p>
         </div>
         <script type="text/javascript" src="../bower_components/requirejs/require.js"></script>
         <script type="text/javascript" src="require.config.js"></script>
@@ -16,6 +17,14 @@
                     test: {
                         click: function () {
                             console.log('click');
+                        },
+
+                        mouseover: function () {
+                            console.log('mouseover');
+                        },
+
+                        mouseout: function () {
+                            console.log('mouseout');
                         }
                     }
                 });
