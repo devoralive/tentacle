@@ -8,6 +8,7 @@
         <div id="container">
             <p><a href="/test" data-tentacle="test:click">Test click</a></p>
             <p><a href="/hover" data-tentacle="test:mouseover test:mouseout">Test mouseover</a></p>
+            <p><a href="/hover" data-tentacle="test:anticipatedClick">Test test</a></p>
         </div>
         <script type="text/javascript" src="../bower_components/requirejs/require.js"></script>
         <script type="text/javascript" src="require.config.js"></script>
@@ -25,6 +26,10 @@
 
                         mouseout: function () {
                             console.log('mouseout');
+                        },
+
+                        anticipatedClick: function () {
+                            this.bind('click', this.click);
                         }
                     }
                 });
