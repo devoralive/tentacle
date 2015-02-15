@@ -1,4 +1,4 @@
-define('tentacle/tentacle', ['tentacle/navigator!MutationObserver', 'tentacle/event'], function (MutationObserver, event) {
+define('tentacle/tentacle', ['tentacle/mutation', 'tentacle/event'], function (MutationObserver, event) {
     'use strict';
 
     return {
@@ -19,6 +19,7 @@ define('tentacle/tentacle', ['tentacle/navigator!MutationObserver', 'tentacle/ev
             this.base = document.querySelector(selector);
             this.observer = new MutationObserver(this.onMutated.bind(this));
             event.parseEvents(this.grabNode());
+            //this.observer.observe(this.base);
         },
 
         grabNode: function (element) {
@@ -33,7 +34,6 @@ define('tentacle/tentacle', ['tentacle/navigator!MutationObserver', 'tentacle/ev
             var self = this;
             mutations.forEach(function (mutation) {
                 var nodes = self.grabNode(mutation.target);
-                console.log(nodes);
             });
         }
     };

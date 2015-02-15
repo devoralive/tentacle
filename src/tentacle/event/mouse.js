@@ -16,8 +16,8 @@ define('tentacle/event/mouse', function () {
             return (this.event_list.indexOf(action) === -1 ? false : true);
         },
 
-        attach: function (element, controller, namespace, action) {
-            element.addEventListener(action, function (event) {
+        attach: function (element, event_name, controller, namespace, action) {
+            element.addEventListener(event_name, function (event) {
                 event.preventDefault();
                 controller.resolve(namespace, action, event);
             });

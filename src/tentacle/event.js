@@ -6,7 +6,6 @@ define('tentacle/event', ['tentacle/controller', 'tentacle/event.loader!'], func
 
         getEventManager: function (action) {
             var manager;
-            console.log(this.events);
             for (manager in this.events) {
                 if (this.events[manager].accept(action)) {
                     return this.events[manager];
@@ -27,14 +26,15 @@ define('tentacle/event', ['tentacle/controller', 'tentacle/event.loader!'], func
 
         bindEvents: function (node, events) {
             var key;
-            console.log(events);
+
             for (key in events) {
                 if (events.hasOwnProperty(key)) {
                     var elems = events[key].split(':'),
+                        event_name = elems.shift(),
                         namespace = elems.shift(),
                         action = elems.pop();
 
-                    this.getEventManager(action).attach(node, controller, namespace, action);
+                    this.getEventManager(action).attach(node, event_name, controller, namespace, action);
                 }
             }
         }

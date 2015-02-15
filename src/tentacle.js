@@ -7,9 +7,12 @@ define('tentacle', function () {
 
     return {
         load: function (name, req, onLoad) {
-            req(['doa!class:tentacle/tentacle'], function (Tentacle) {
-                register.tentacles.push(new Tentacle(name));
-                onLoad(undefined);
+            req(['tentacle/controller'], function (controller) {
+                onLoad(controller);
+
+                req(['doa!class:tentacle/tentacle'], function (Tentacle) {
+                    register.tentacles.push(new Tentacle(name));
+                });
             });
         }
     };

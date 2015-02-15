@@ -6,14 +6,15 @@
     </head>
     <body>
         <div id="container">
-            <p><a href="/test" data-tentacle="test:click">Test click</a></p>
-            <p><a href="/hover" data-tentacle="test:mouseover test:mouseout">Test mouseover</a></p>
-            <p><a href="/hover" data-tentacle="test:anticipatedClick">Test test</a></p>
+            <p><a href="/test" data-tentacle="click:test:click">Test click</a></p>
+            <p><a href="/hover" data-tentacle="mouseover:test:mouseover mouseout:test:mouseout">Test mouseover</a></p>
         </div>
+        <p><a href="/hover" data-tentacle="test:anticipatedClick">Test test</a></p>
         <script type="text/javascript" src="../bower_components/requirejs/require.js"></script>
         <script type="text/javascript" src="require.config.js"></script>
         <script type="text/javascript">
-            require(['tentacle/controller', 'tentacle!#container'], function(controller) {
+            require(['tentacle!#container'], function(controller) {
+
                 controller.register({
                     test: {
                         click: function () {
@@ -26,10 +27,6 @@
 
                         mouseout: function () {
                             console.log('mouseout');
-                        },
-
-                        anticipatedClick: function () {
-                            this.bind('click', this.click);
                         }
                     }
                 });
