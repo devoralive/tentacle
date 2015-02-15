@@ -1,20 +1,22 @@
 {
   "name": "tentacle",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "authors": [
     "Nicolas Dufreche <n.dufreche@gmail.com>"
   ],
-  "description": "tentacle framework",
-  "main": "src/farmer.js",
+  "description": "Tentacle dom router",
+  "main": "dist/tentacle.js",
   "moduleType": [
     "amd"
   ],
   "keywords": [
-    "framework"
+    "dom router",
+    "dom event",
+    "controller"
   ],
   "license": "MIT",
-  "homepage": "https://github/devoralive/tentacle",
-  "private": true,
+  "homepage": "https://github.com/devoralive/tentacle",
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",

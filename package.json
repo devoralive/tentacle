@@ -1,8 +1,8 @@
 {
   "name": "tentacle",
-  "version": "0.0.1",
-  "description": "",
-  "main": "tentacle framework",
+  "version": "0.1.0",
+  "description": "Tentacle dom router",
+  "main": "dist/tentacle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,9 @@
     "url": "htpps://github.com/devoralive/tentacle"
   },
   "keywords": [
-    "framework"
+    "dom router",
+    "dom event",
+    "controller"
   ],
   "author": "Nicolas Dufreche <n.dufreche@gmail.com>",
   "license": "MIT",
@@ -25,8 +27,5 @@
     "grunt-jslint": "^1.1.12",
     "grunt-template-jasmine-istanbul": "^0.3.0",
     "grunt-template-jasmine-requirejs": "^0.2.0"
-  },
-  "dependencies": {
-    "paralleljs": "^0.2.1"
   }
 }

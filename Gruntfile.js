@@ -21,32 +21,6 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            specs: {
-                src: ['test/**/*.js'],
-                directives: {
-                    node: true,
-                    nomen: true,
-                    predef: [
-                        'define',
-                        'require',
-                        'it',
-                        'expect',
-                        '__dirname',
-                        'describe',
-                        'xdescribe',
-                        'spyOn',
-                        'jasmine',
-                        'sessionStorage',
-                        'window',
-                        'before',
-                        'beforeEach',
-                        'after',
-                        'afterEach',
-                        'xit',
-                        'xdescribe'
-                    ]
-                }
-            },
             sources: {
                 src: ['src/**/*.js'],
                 directives: {
@@ -99,8 +73,8 @@ module.exports = function (grunt) {
                 }
             },
             dist: {
-                src: ['src/doa.dist.js', 'src/doa.js', 'src/doa/*.js'],
-                dest: 'dist/doa.js'
+                src: ['src/tentacle.dist.js', 'src/tentacle.js', 'src/tentacle/*.js', 'src/tentacle/event/*.js'],
+                dest: 'dist/tentacle.js'
             }
         },
         uglify: {
@@ -123,6 +97,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-istanbul-coverage');
 
-    grunt.registerTask('test', ['jshint', 'jslint', 'jasmine:coverage']);
-    grunt.registerTask('dist', ['jshint', 'jslint', 'jasmine:coverage', 'concat', 'uglify']);
+    grunt.registerTask('test', ['jshint', 'jslint']);
+    grunt.registerTask('dist', ['jshint', 'jslint', 'concat', 'uglify']);
 };
