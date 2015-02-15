@@ -2,7 +2,7 @@ require.config({
     baseUrl: './..',
     urlArgs: 'cb=' + Math.random(),
     paths: {
-        tentacle: 'src/tentacle',
+        tentacle: 'dist/tentacle',
         doa: 'bower_components/doa/dist/doa'
     },
     shim: {},

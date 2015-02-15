@@ -4,7 +4,7 @@ define('tentacle/event.loader', ['doa/class', 'doa/interface', 'tentacle/event/i
     return {
         load: function (name, req, onLoad, config) {
             if (!config.tentacle && !config.tentacle.events) {
-
+                throw 'no tentacle events configuration found.';
             }
 
             req(config.tentacle.events, function () {
@@ -17,6 +17,7 @@ define('tentacle/event.loader', ['doa/class', 'doa/interface', 'tentacle/event/i
                 }
 
                 onLoad(args);
+                return name;
             });
         }
     };

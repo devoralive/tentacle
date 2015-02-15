@@ -1,25 +1,27 @@
-define('tentacle/event', ['tentacle/controller', 'tentacle/event.loader!'], function (controller, events) {
+define('tentacle/event', ['tentacle/controller', 'tentacle/event.loader!'], function (controller, event_managers) {
     'use strict';
 
     return {
-        events: events,
+        events: event_managers,
 
         getEventManager: function (event_name) {
             var manager;
             for (manager in this.events) {
-                if (this.events[manager].accept(event_name)) {
-                    return this.events[manager];
-                } else {
+                if (this.events.hasOwnProperty(manager)) {
+                    if (this.events[manager].accept(event_name)) {
+                        return this.events[manager];
+                    }
                     throw 'no event manager found for the event type: ' + event_name;
                 }
             }
         },
 
         parseEvents: function (nodes) {
-            var key;
+            var key,
+                events;
             for (key in nodes) {
                 if (nodes.hasOwnProperty(key)) {
-                    var events = nodes[key].dataset.tentacle.split(' ');
+                    events = nodes[key].dataset.tentacle.split(' ');
 
                     this.bindEvents(nodes[key], events);
                 }
@@ -27,15 +29,19 @@ define('tentacle/event', ['tentacle/controller', 'tentacle/event.loader!'], func
         },
 
         bindEvents: function (node, events) {
-            var key;
+            var key,
+                elems,
+                event_name,
+                namespace,
+                action;
 
             for (key in events) {
                 if (events.hasOwnProperty(key)) {
-                    var elems = events[key].split(':'),
-                        event_name = elems.shift(),
-                        namespace = elems.shift(),
-                        action = elems.pop();
-                    node.setAttribute('data-grabed', 'true');
+                    elems = events[key].split(':');
+                    event_name = elems.shift();
+                    namespace = elems.shift();
+                    action = elems.pop();
+                    node.setAttribute('data-grabed', true);
                     this.getEventManager(event_name).attach(node, event_name, controller, namespace, action);
                 }
             }

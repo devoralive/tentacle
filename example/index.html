@@ -18,6 +18,7 @@
                     test: {
                         click: function () {
                             console.log('click');
+                            this.mouseout();
                             document.querySelector('#container').insertAdjacentHTML('beforeend', '<p><a href="/truc" data-tentacle="click:test:test">Test new element</a></p>');
                         },
 

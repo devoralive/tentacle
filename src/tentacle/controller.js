@@ -16,7 +16,7 @@ define('tentacle/controller', function () {
         resolve: function (namespace, action, event) {
             namespace = namespace.split(':');
             if (registry[namespace] && registry[namespace][action]) {
-                registry[namespace][action].call(registry[namespace], event);
+                registry[namespace][action](event);
             } else {
                 throw 'No method registred';
             }

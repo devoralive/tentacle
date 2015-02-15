@@ -25,6 +25,6 @@ define('tentacle/tentacle', ['doa!class:tentacle/event'], function (Event) {
                 return element.querySelectorAll(selector);
             }
             return this.base.querySelectorAll(selector);
-        },
+        }
     };
 });
