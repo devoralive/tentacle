@@ -10,8 +10,8 @@ define('tentacle', function () {
             req(['tentacle/controller'], function (controller) {
                 onLoad(controller);
 
-                req(['doa!class:tentacle/tentacle'], function (Tentacle) {
-                    register.tentacles.push(new Tentacle(name));
+                req(['doa!class:tentacle/tentacle', 'doa!class:tentacle/mutation'], function (Tentacle, Mutation) {
+                    new Mutation(name, new Tentacle(name));
                 });
             });
         }

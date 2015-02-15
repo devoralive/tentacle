@@ -7,9 +7,8 @@
     <body>
         <div id="container">
             <p><a href="/test" data-tentacle="click:test:click">Test click</a></p>
-            <p><a href="/hover" data-tentacle="mouseover:test:mouseover mouseout:test:mouseout">Test mouseover</a></p>
+            <p><a href="/hover" data-tentacle="mouseover:testbis:mouseover mouseout:testbis:mouseout">Test mouseover</a></p>
         </div>
-        <p><a href="/hover" data-tentacle="test:anticipatedClick">Test test</a></p>
         <script type="text/javascript" src="../bower_components/requirejs/require.js"></script>
         <script type="text/javascript" src="require.config.js"></script>
         <script type="text/javascript">
@@ -19,8 +18,27 @@
                     test: {
                         click: function () {
                             console.log('click');
+                            document.querySelector('#container').insertAdjacentHTML('beforeend', '<p><a href="/truc" data-tentacle="click:test:test">Test new element</a></p>');
                         },
 
+                        mouseover: function () {
+                            console.log('mouseover');
+                        },
+
+                        mouseout: function () {
+                            console.log('mouseout');
+                        },
+
+                        test: function () {
+                            console.log('new');
+                        }
+                    }
+                });
+            });
+            require(['tentacle!#container'], function(controller) {
+
+                controller.register({
+                    testbis: {
                         mouseover: function () {
                             console.log('mouseover');
                         },

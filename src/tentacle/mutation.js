@@ -1,6 +1,8 @@
 define('tentacle/mutation', function () {
     'use strict';
-    var MutationObserver = window.MutationObserver;
+    var MutationObserver = window.MutationObserver,
+        tentacles = {};
+
 
     if (undefined === MutationObserver) {
         MutationObserver = function (callback) {
@@ -19,5 +21,26 @@ define('tentacle/mutation', function () {
         };
     }
 
-    return MutationObserver;
+    return {
+        config: {
+            childList: true,
+            characterData: true
+        },
+
+        construct: function(name, tentacle) {
+            if (tentacles[name] === undefined) {
+                tentacle.base.setAttribute('data-tentacle-identifier', name);
+                tentacles[name] = {};
+                tentacles[name].tentacle = tentacle;
+                tentacles[name].observer = new MutationObserver(this.onMutations);
+                tentacles[name].observer.observe(tentacle.base, this.config);
+            }
+        },
+
+        onMutations: function (mutations) {
+            mutations.forEach(function(mutation) {
+                tentacles[mutation.target.getAttribute('data-tentacle-identifier')].tentacle.grabNode();
+            });
+        }
+    };
 });

@@ -4,11 +4,13 @@ define('tentacle/event', ['tentacle/controller', 'tentacle/event.loader!'], func
     return {
         events: events,
 
-        getEventManager: function (action) {
+        getEventManager: function (event_name) {
             var manager;
             for (manager in this.events) {
-                if (this.events[manager].accept(action)) {
+                if (this.events[manager].accept(event_name)) {
                     return this.events[manager];
+                } else {
+                    throw 'no event manager found for the event type: ' + event_name;
                 }
             }
         },
@@ -33,8 +35,8 @@ define('tentacle/event', ['tentacle/controller', 'tentacle/event.loader!'], func
                         event_name = elems.shift(),
                         namespace = elems.shift(),
                         action = elems.pop();
-
-                    this.getEventManager(action).attach(node, event_name, controller, namespace, action);
+                    node.setAttribute('data-grabed', 'true');
+                    this.getEventManager(event_name).attach(node, event_name, controller, namespace, action);
                 }
             }
         }
